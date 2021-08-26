@@ -2,7 +2,7 @@ package com.alea.pokeApi.service.impl;
 
 import com.alea.pokeApi.jpa.PokemonJpa;
 import com.alea.pokeApi.model.Pokemon;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -32,6 +32,7 @@ public class PokemonServiceTest {
 
     @InjectMocks
     private PokemonServiceImpl pokemonService;
+
 
     @Test
     public void findAllPokemonOrderedTestEmptyPage() {

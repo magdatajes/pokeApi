@@ -2,7 +2,7 @@ package com.alea.pokeApi.controller.impl;
 
 import com.alea.pokeApi.rest.PokemonDto;
 import com.alea.pokeApi.service.impl.PokemonServiceImpl;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
