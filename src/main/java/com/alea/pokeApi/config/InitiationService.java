@@ -33,11 +33,15 @@ public class InitiationService {
 
     public void populateDataBase() {
         final ResponseEntity<PaginatedResponse> response = restTemplate.getForEntity(pokemonUrl, PaginatedResponse.class);
+        final Optional<PaginatedResponse> responseBodyOptional = Optional.ofNullable(response.getBody());
+        if (responseBodyOptional.isEmpty()) {
+            throw new RuntimeException();
+        }
         final Integer totalPokemon = response.getBody().getCount();
         final String totalUrl = pokemonUrl + RestConstants.LIMIT_QUERY + totalPokemon;
         final ResponseEntity<PaginatedResponse> allPokemonsResponse = restTemplate.getForEntity(totalUrl, PaginatedResponse.class);
         final Optional<PaginatedResponse> bodyOptional = Optional.ofNullable(allPokemonsResponse.getBody());
-        pokemonJpa.saveAll(getPokemon(bodyOptional.get().getResults()));
+        bodyOptional.ifPresent(paginatedResponse -> pokemonJpa.saveAll(getPokemon(paginatedResponse.getResults())));
     }
 
     private List<Pokemon> getPokemon(final List<ResultsDto> pokemonList) {

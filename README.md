@@ -1,6 +1,6 @@
 # Read Me
 
-The all 3 scenarios can be retrieved with the same endpoint, using the usual pagination url, for example:
+All 3 scenarios can be retrieved with the same endpoint, using the usual pagination url, for example:
 http://localhost:8080/pokemon?sort=height,desc&size=5
 
 Being the main resource endpoint
